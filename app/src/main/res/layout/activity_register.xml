@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".activity.RegisterActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +23,8 @@
             android:hint="@string/first_name"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editTextSurName"
@@ -36,7 +37,8 @@
 
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            tools:ignore="Autofill" />
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -48,7 +50,8 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            tools:ignore="Autofill" />
 
         <Button
             android:id="@+id/buttonRegister"

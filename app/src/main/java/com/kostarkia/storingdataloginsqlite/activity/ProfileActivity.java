@@ -1,8 +1,10 @@
-package com.kostarkia.storingdataloginsqlite;
+package com.kostarkia.storingdataloginsqlite.activity;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.kostarkia.storingdataloginsqlite.R;
 
 public class ProfileActivity extends AppCompatActivity {
 

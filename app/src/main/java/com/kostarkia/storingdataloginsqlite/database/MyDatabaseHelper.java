@@ -25,6 +25,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         this.context = context;
     }
 
+    //Veritabanı oluşturmak için
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NEW + " (" +
@@ -41,6 +42,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NEW);
     }
 
+    // Kullanıcı eklemek için
     public void addUser(String firstName, String surName, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -59,6 +61,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //Giriş işleminde bilgileri kontrol etmek için
     public boolean checkUser(String firstName, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {COLUMN_ID};
@@ -73,6 +76,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    //veritabanında firsname birden fazla kayıt var mı diye kontrol etmek için
     public boolean checkRegister(String firstName) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {COLUMN_ID};

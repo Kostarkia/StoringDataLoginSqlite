@@ -1,4 +1,4 @@
-package com.kostarkia.storingdataloginsqlite;
+package com.kostarkia.storingdataloginsqlite.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.kostarkia.storingdataloginsqlite.R;
 import com.kostarkia.storingdataloginsqlite.database.MyDatabaseHelper;
 
 public class LoginActivity extends AppCompatActivity {
@@ -23,8 +24,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
 
         editTextUserName = findViewById(R.id.editTextFirstName);
         editTextPassword = findViewById(R.id.editTextPassword);
@@ -52,38 +51,34 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(String userName, String password) {
-        System.out.println("w");
-        if (!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(password)) {
-            try {
 
-                MyDatabaseHelper db = new MyDatabaseHelper(LoginActivity.this);
-                boolean isUserExits = db.checkUser(userName, password);
+        if (!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(password)) {//userName ve password un boş olup olmadığını kontrol eder
 
-                if (isUserExits) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.success), Toast.LENGTH_SHORT).show();
+            MyDatabaseHelper db = new MyDatabaseHelper(LoginActivity.this);
+            boolean isUserExits = db.checkUser(userName, password);
 
-                    prefences.edit().putString("userName", userName).apply();
+            if (isUserExits) {
+                Toast.makeText(getApplicationContext(), getString(R.string.success), Toast.LENGTH_SHORT).show();
 
-                    editTextUserName.setText("");
-                    editTextPassword.setText("");
+                prefences.edit().putString("userName", userName).apply(); //Son giriş yapan kullanıcının Kullanıcı adını saklar
 
-                    Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-                    startActivity(intent);
+                editTextUserName.setText("");
+                editTextPassword.setText("");
 
-                } else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.unsuccessful), Toast.LENGTH_SHORT).show();
-                }
-            } catch (Exception e) {
-                System.out.println(e.toString());
+                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                startActivity(intent);
 
+            } else {
+                Toast.makeText(getApplicationContext(), getString(R.string.unsuccessful), Toast.LENGTH_SHORT).show();
             }
+
         } else {
             Toast.makeText(getApplicationContext(), getString(R.string.userandpasswordisnotnull), Toast.LENGTH_SHORT).show();
         }
     }
 
     public void register() {
-        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class); // Kayıt ol ekranına yönlendirir
         startActivity(intent);
     }
 }

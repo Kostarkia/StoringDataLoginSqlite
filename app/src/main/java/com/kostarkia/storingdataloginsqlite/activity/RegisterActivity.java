@@ -1,14 +1,13 @@
-package com.kostarkia.storingdataloginsqlite;
+package com.kostarkia.storingdataloginsqlite.activity;
 
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.kostarkia.storingdataloginsqlite.R;
 import com.kostarkia.storingdataloginsqlite.database.MyDatabaseHelper;
 
 public class RegisterActivity extends AppCompatActivity {
