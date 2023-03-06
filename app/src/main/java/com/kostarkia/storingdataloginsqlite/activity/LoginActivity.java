@@ -32,22 +32,12 @@ public class LoginActivity extends AppCompatActivity {
 
         prefences = this.getSharedPreferences("com.kostarkia.storingdataloginsqlite", MODE_PRIVATE);
 
-        String getUser = prefences.getString("userName", null);
+        String getUser = prefences.getString("userName", null);//son giriş yapan kişinin userName ini çeker
         editTextUserName.setText(getUser);
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                login(editTextUserName.getText().toString(), editTextPassword.getText().toString());
-            }
-        });
+        buttonLogin.setOnClickListener(view -> login(editTextUserName.getText().toString(), editTextPassword.getText().toString()));
 
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                register();
-            }
-        });
+        buttonRegister.setOnClickListener(view -> register());
     }
 
     public void login(String userName, String password) {

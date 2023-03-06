@@ -8,6 +8,10 @@
     <string name="login_button">Giriş Yap</string>
     <string name="success">Başarılı</string>
     <string name="unsuccessful">Başarısız</string>
+    <string name="save">Kaydet</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="are_you_sure_saved">Kaydetmek istediğinize emin misiniz ?</string>
     <string name="userandpasswordisnotnull">Ad ve ya şifre boş olamaz !</string>
     <string name="stringisnotnull">Boş alan bıraktınız. Lütfen bilgilerinizi kontrol ediniz.</string>
     <string name="title_activity_login">LoginActivity</string>

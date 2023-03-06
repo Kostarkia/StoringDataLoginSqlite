@@ -1,10 +1,12 @@
 package com.kostarkia.storingdataloginsqlite.activity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kostarkia.storingdataloginsqlite.R;
@@ -41,17 +43,25 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(RegisterActivity.this, getString(R.string.stringisnotnull), Toast.LENGTH_SHORT).show();
             }
         } else {
-            if (!isUserExits) {
-                myDB.addUser(firstName.trim(), surName.trim(), password.trim());
 
-                editTextFirstName.setText("");
-                editTextSurName.setText("");
-                editTextPassword.setText("");
-            }
+            AlertDialog.Builder alert = new AlertDialog.Builder(this); //onay kutusu
+
+            alert.setTitle(getString(R.string.save));
+            alert.setMessage(getString(R.string.are_you_sure_saved));
+
+            alert.setNegativeButton(getString(R.string.no), (dialogInterface, i) -> Toast.makeText(this,getString(R.string.unsuccessful),Toast.LENGTH_SHORT).show());
+
+            alert.setPositiveButton(getString(R.string.yes), (dialogInterface, i) -> {
+                if (!isUserExits) {
+                    myDB.addUser(firstName.trim(), surName.trim(), password.trim());
+
+                    editTextFirstName.setText("");
+                    editTextSurName.setText("");
+                    editTextPassword.setText("");
+                }
+            });
+
+            alert.show();
         }
-
-
     }
-
-
 }
